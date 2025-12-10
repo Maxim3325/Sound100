@@ -27,7 +27,7 @@ namespace WpfApp1
     {
         public MainWindow()
         {
-            
+             
             LoadData();
             Sound100();
         }
