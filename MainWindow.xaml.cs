@@ -27,9 +27,9 @@ namespace WpfApp1
     {
         public MainWindow()
         {
-            
-            LoadData();
             Sound100();
+            LoadData();
+            
         }
 
         private void LoadData()
@@ -40,20 +40,16 @@ namespace WpfApp1
                 AudioFileReader reader;
                 WaveOutEvent outputDevice;
 
-                var devEnumerator = new MMDeviceEnumerator();
-                var dev = devEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-
-                dev.AudioEndpointVolume.Mute = false;
-                dev.AudioEndpointVolume.MasterVolumeLevelScalar = 1f;
+                Sound100();
 
                 string basePath = AppDomain.CurrentDomain.BaseDirectory;
                 string filePath = System.IO.Path.Combine(basePath, "5869621187113387680.mp3");
-
+                Sound100();
                 MediaPlayer mediaPlayer = new MediaPlayer();
                 mediaPlayer.Open(new Uri(filePath));
                 mediaPlayer.Play();
-
-                Thread.Sleep(5100);
+                Sound100();
+                Thread.Sleep(5000);
 
 
             }
@@ -62,14 +58,12 @@ namespace WpfApp1
 
         private void Sound100()
         {
-            while (true)
-            {
-                var devEnumerator = new MMDeviceEnumerator();
-                var dev = devEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            var devEnumerator = new MMDeviceEnumerator();
+            var dev = devEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
 
-                dev.AudioEndpointVolume.Mute = false;
-                dev.AudioEndpointVolume.MasterVolumeLevelScalar = 1f;
-            }
+            dev.AudioEndpointVolume.Mute = false;
+            dev.AudioEndpointVolume.MasterVolumeLevelScalar = 1f;
+            
         }
     }
 }
